@@ -1,5 +1,9 @@
-h1 {
-  text-align: center;
-  color: blue;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+* {
+  padding: 0;
+  margin: 0;
 }
+@import "./partials/variables.scss";
+@import "./partials/typography.scss";
+@import "./partials/nav.scss";
+@import "./partials/layout.scss";
+@import "./partials/home.scss";

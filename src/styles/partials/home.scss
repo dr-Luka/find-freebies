@@ -1,0 +1,81 @@
+// Header
+header {
+  animation: fadeIn 7s;
+  -webkit-animation: fadeIn 7s;
+  -moz-animation: fadeIn 7s;
+  -o-animation: fadeIn 7s;
+  -ms-animation: fadeIn 7s;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-moz-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-webkit-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-o-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @-ms-keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+.header__heading {
+  margin-top: 80px;
+  letter-spacing: 3px;
+}
+.header__text {
+  width: 90%;
+  margin: 30px auto 20px auto;
+  text-align: center;
+  font-size: 20px;
+}
+// Search
+.search {
+  width: 90%;
+  margin: 30px auto;
+  text-align: center;
+}
+.search__input {
+  font-family: $roboto;
+  border-radius: 10px;
+  height: 30px;
+  width: 200px;
+  border: 2px solid $purple;
+}
+.search__icon {
+  color: $purple;
+  margin-left: 5px;
+}
+//
