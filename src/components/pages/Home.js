@@ -1,17 +1,19 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+import LatestPostsRender from "../api/LatestPostsRender";
+
 export default function Home() {
   return (
     <div className="page">
-      <header>
+      <header className="fade">
         <h1 className="header__heading">Welcome</h1>
         <p className="header__text">
           Find items that are given away and help minimize trash on our planet!
         </p>
       </header>
       <main>
-        <div className="search">
+        <div className="search fade">
           <input
             className="search__input"
             type="text"
@@ -19,9 +21,8 @@ export default function Home() {
           ></input>
           <FontAwesomeIcon className="search__icon" icon={faMagnifyingGlass} />
         </div>
-        <div className="latestPosts">
-          <h2>Latest Posts</h2>
-        </div>
+        <h2>Latest Posts in San Francisco</h2>
+        <LatestPostsRender />
       </main>
     </div>
   );

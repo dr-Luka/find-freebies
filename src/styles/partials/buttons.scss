@@ -1,0 +1,15 @@
+.button {
+  font-family: $roboto;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.3em;
+  padding: 5px 30px;
+}
+
+.button--view {
+  background-color: $green;
+  border: 1px solid transparent;
+}
+.button--view:hover {
+  box-shadow: 0px 0px 10px $purple;
+}

@@ -1,56 +1,5 @@
 // Header
-header {
-  animation: fadeIn 7s;
-  -webkit-animation: fadeIn 7s;
-  -moz-animation: fadeIn 7s;
-  -o-animation: fadeIn 7s;
-  -ms-animation: fadeIn 7s;
 
-  @keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-moz-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-o-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-
-  @-ms-keyframes fadeIn {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
-  }
-}
 .header__heading {
   margin-top: 80px;
   letter-spacing: 3px;
@@ -61,21 +10,49 @@ header {
   text-align: center;
   font-size: 20px;
 }
+
 // Search
 .search {
   width: 90%;
-  margin: 30px auto;
+  margin: 50px auto;
   text-align: center;
 }
 .search__input {
   font-family: $roboto;
   border-radius: 10px;
-  height: 30px;
-  width: 200px;
+  height: 40px;
+  width: 250px;
   border: 2px solid $purple;
+  font-size: 1.1em;
 }
 .search__icon {
   color: $purple;
   margin-left: 5px;
+  font-size: 1.5em;
 }
-//
+// Featured Posts
+.featuredPosts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+// Post Card
+.card {
+  margin: 50px 20px;
+  text-align: center;
+  width: 300px;
+  border: 3px dotted $purple;
+  padding: 15px 5px;
+}
+.card__image {
+  text-align: center;
+  min-height: 267px;
+}
+.card__info {
+  height: 50px;
+}
+.card__button {
+  margin-top: 10px;
+}
