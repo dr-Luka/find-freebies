@@ -1,9 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+import { useState } from "react";
+
 import LatestPostsRender from "../api/LatestPostsRender";
 
 export default function Home() {
+  const [filter, setFilter] = useState("");
   return (
     <div className="page">
       <header className="fade">
@@ -18,11 +21,13 @@ export default function Home() {
             className="search__input"
             type="text"
             placeholder=" Try BBQ, Yoga Mat, Painting ..."
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
           ></input>
           <FontAwesomeIcon className="search__icon" icon={faMagnifyingGlass} />
         </div>
         <h2>Latest Posts in San Francisco</h2>
-        <LatestPostsRender />
+        <LatestPostsRender filter={filter} />
       </main>
     </div>
   );
