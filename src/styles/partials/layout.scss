@@ -1,6 +1,12 @@
 body {
   background-color: $blue;
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+// ANIMATION
 .fade {
   animation: fadeIn 5s;
   -webkit-animation: fadeIn 5s;

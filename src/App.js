@@ -7,7 +7,7 @@ import Footer from "./components/layout/Footer";
 import Home from "./components/pages/Home";
 import Message from "./components/pages/Message";
 import Profile from "./components/pages/Profile";
-import PostDetails from "./components/pages/PostDetails";
+import Details from "./components/pages/Details";
 import SearchResults from "./components/pages/SearchResults";
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
         <Routes>
           <Route path="/message" element={<Message />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/details/:id" element={<PostDetails />} />
+          <Route path="/details/:id" element={<Details />} />
           <Route path="/results" element={<SearchResults />} />
           <Route path="/" element={<Home />} />
         </Routes>

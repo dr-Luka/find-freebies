@@ -1,0 +1,37 @@
+.details {
+  width: 95%;
+  margin: 0 auto;
+}
+.details__image {
+  background-color: lightseagreen;
+  height: 200px;
+  margin-top: 50px;
+}
+.details__title {
+  font-family: $montserrat;
+  font-size: 20px;
+  margin: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+.details__description {
+  font-family: $roboto;
+  font-weight: 300;
+  margin-bottom: 50px;
+}
+.author {
+  display: flex;
+  border: 3px dotted $purple;
+  padding: 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.author__image img {
+  width: 50px;
+}
+.author__info {
+  font-family: $montserrat;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+}

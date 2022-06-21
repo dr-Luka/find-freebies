@@ -5,7 +5,7 @@ import { token } from "./apiSettings";
 
 export default function LatestPostsRender({ filter }) {
   const [loading, setLoading] = useState(true);
-  // const []
+  const [posts, setPosts] = useState([]);
   const [displayData, setDisplayData] = useState([]);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function LatestPostsRender({ filter }) {
         "https://trashnothing.com/api/v1.2/posts?per_page=6&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=37.773972&longitude= -122.431297&radius=25000",
         config
       );
-      setDisplayData(response.data.posts);
+      setPosts(response.data.posts);
       setLoading(false);
     };
     fetchData();
@@ -25,16 +25,15 @@ export default function LatestPostsRender({ filter }) {
 
   useEffect(() => {
     const applyFilter = async () => {
-      console.log(filter);
       setLoading(true);
-      const data = await displayData.filter((data) =>
-        data.title.includes(filter)
+      const data = await posts.filter((data) =>
+        data.title.toLowerCase().startsWith(filter.toLowerCase())
       );
-      await setDisplayData(data);
+      setDisplayData(data);
       setLoading(false);
     };
     applyFilter();
-  }, [filter]);
+  }, [filter, posts]);
 
   if (loading) {
     return <div>Loading..</div>;
@@ -42,19 +41,23 @@ export default function LatestPostsRender({ filter }) {
 
   return (
     <div className="featuredPosts">
-      {displayData.map(function (Post) {
-        const { content, photos, post_id, title, user_id } = Post;
-        return (
-          <HomePostCard
-            key={post_id}
-            post_id={post_id}
-            title={title}
-            description={content}
-            photos={photos[0].thumbnail}
-            user={user_id}
-          />
-        );
-      })}
+      {displayData.length ? (
+        displayData.map(function (Post) {
+          const { content, photos, post_id, title, user_id } = Post;
+          return (
+            <HomePostCard
+              key={post_id}
+              post_id={post_id}
+              title={title}
+              description={content}
+              photos={photos && photos[0].thumbnail}
+              user={user_id}
+            />
+          );
+        })
+      ) : (
+        <div>No filter</div>
+      )}
     </div>
   );
 }
