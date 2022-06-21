@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
-import HomePostCard from "../layout/HomePostCard";
+import PostsCard from "../layout/PostsCard";
 import { token } from "./apiSettings";
 
 export default function LatestPostsRender({ filter }) {
@@ -14,7 +14,7 @@ export default function LatestPostsRender({ filter }) {
         headers: { Authorization: `Bearer ${token}` },
       };
       const response = await Axios.get(
-        "https://trashnothing.com/api/v1.2/posts?per_page=6&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=37.773972&longitude= -122.431297&radius=25000",
+        "https://trashnothing.com/api/v1.2/posts?per_page=6&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=40.730610&longitude= -73.935242&radius=25000",
         config
       );
       setPosts(response.data.posts);
@@ -36,7 +36,14 @@ export default function LatestPostsRender({ filter }) {
   }, [filter, posts]);
 
   if (loading) {
-    return <div>Loading..</div>;
+    return (
+      <div className="loader">
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -45,7 +52,7 @@ export default function LatestPostsRender({ filter }) {
         displayData.map(function (Post) {
           const { content, photos, post_id, title, user_id } = Post;
           return (
-            <HomePostCard
+            <PostsCard
               key={post_id}
               post_id={post_id}
               title={title}
@@ -56,7 +63,7 @@ export default function LatestPostsRender({ filter }) {
           );
         })
       ) : (
-        <div>No filter</div>
+        <p>No Posts to Show</p>
       )}
     </div>
   );

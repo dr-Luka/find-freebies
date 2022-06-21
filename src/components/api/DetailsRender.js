@@ -18,8 +18,6 @@ export default function DetailsRender() {
       setAuthorDetails(response.data.author);
     });
   }, []);
-  console.log(PostDetails);
-  console.log(AuthorDetails);
 
   return (
     <div className="details">
@@ -29,10 +27,7 @@ export default function DetailsRender() {
       <div className="author">
         <div className="flex">
           <div className="author__image">
-            <img
-              src={AuthorDetails.profile_image}
-              alt="Image of the post item"
-            />
+            <img src={AuthorDetails.profile_image} alt="Profile Image" />
           </div>
           <div className="author__info">
             <div>{AuthorDetails.username}</div>

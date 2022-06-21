@@ -24,9 +24,9 @@ export default function Home() {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           ></input>
-          <FontAwesomeIcon className="search__icon" icon={faMagnifyingGlass} />
+          <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} />
         </div>
-        <h2>Latest Posts in San Francisco</h2>
+        <h2>Latest Posts in New York</h2>
         <LatestPostsRender filter={filter} />
       </main>
     </div>

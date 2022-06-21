@@ -17,7 +17,7 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/message" element={<Message />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="/results" element={<SearchResults />} />
           <Route path="/" element={<Home />} />
