@@ -24,13 +24,18 @@ export default function ProfileRender() {
     <>
       <div className="profile">
         <div className="profile__image">
-          <img src={AuthorDetails.profile_image} alt="Profile image of user" />
+          <img src={AuthorDetails.profile_image} alt="Profile Image" />
         </div>
         <div className="profile__username">{AuthorDetails.username}</div>
         <div className="profile__country">{AuthorDetails.country}</div>
+        <div className="profile__messageButton">
+          <Link to={`/message`}>
+            <button className="button button--view">Contact</button>
+          </Link>
+        </div>
       </div>
+      <h2>User Posts</h2>
       <div className="profilePosts">
-        <h2>User Posts</h2>
         {AuthorPosts.length ? (
           AuthorPosts.map(function (Post) {
             const { content, photos, post_id, title, user_id } = Post;

@@ -6,22 +6,28 @@ import { token } from "./apiSettings";
 export default function DetailsRender() {
   const [PostDetails, setPostDetails] = useState([]);
   const [AuthorDetails, setAuthorDetails] = useState([]);
-
+  const [PostImages, setPostImages] = useState([]);
   const { id } = useParams();
-  const url = "https://trashnothing.com/api/v1.2/posts/" + id + "/display";
   useEffect(() => {
+    const url = "https://trashnothing.com/api/v1.2/posts/" + id + "/display";
+
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
     Axios.get(url, config).then(function (response) {
       setPostDetails(response.data.post);
       setAuthorDetails(response.data.author);
+      setPostImages(response.data.post.photos[0]);
     });
   }, []);
 
+  console.log(PostDetails);
+
   return (
     <div className="details">
-      <div className="details__image"></div>
+      <div className="details__image">
+        <img src={PostImages.url} alt="Post Image Unavailable" />
+      </div>
       <div className="details__title">{PostDetails.title}</div>
       <div className="details__description">{PostDetails.content}</div>
       <div className="author">

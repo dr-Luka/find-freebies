@@ -37,25 +37,3 @@
   align-items: flex-start;
   justify-content: center;
 }
-
-// Post Card
-.card {
-  margin: 50px 20px;
-  text-align: center;
-  width: 300px;
-  border: 3px dotted $purple;
-  padding: 15px 5px;
-}
-.card__image {
-  text-align: center;
-  min-height: 267px;
-}
-.card__info {
-  font-family: $montserrat;
-  font-size: 20px;
-  margin-top: 10px;
-  font-weight: 500;
-}
-.card__button {
-  margin-top: 10px;
-}

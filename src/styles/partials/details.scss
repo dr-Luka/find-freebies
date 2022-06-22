@@ -2,10 +2,13 @@
   width: 95%;
   margin: 0 auto;
 }
-.details__image {
+.details__image img {
   background-color: lightseagreen;
-  height: 200px;
+  max-height: 200px;
   margin-top: 20px;
+}
+.details__image {
+  text-align: center;
 }
 .details__title {
   font-family: $montserrat;
@@ -18,6 +21,9 @@
   font-family: $roboto;
   font-weight: 300;
   margin-bottom: 50px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 10px 0px;
 }
 .author {
   display: flex;
@@ -34,4 +40,12 @@
   margin-left: 10px;
   display: flex;
   flex-direction: column;
+}
+
+// MEDIA QUERY
+
+@media only screen and (min-width: 768px) {
+  .details {
+    max-width: 50%;
+  }
 }

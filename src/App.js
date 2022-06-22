@@ -9,6 +9,7 @@ import Message from "./components/pages/Message";
 import Profile from "./components/pages/Profile";
 import Details from "./components/pages/Details";
 import SearchResults from "./components/pages/SearchResults";
+import MessageSent from "./components/pages/MessageSent";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/profile/:id" element={<Profile />} />
           <Route path="/details/:id" element={<Details />} />
           <Route path="/results" element={<SearchResults />} />
+          <Route path="/sent" element={<MessageSent />} />
           <Route path="/" element={<Home />} />
         </Routes>
         <Footer />
