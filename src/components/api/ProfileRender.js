@@ -9,8 +9,8 @@ export default function ProfileRender() {
   const [AuthorPosts, setAuthorPosts] = useState([]);
 
   const { id } = useParams();
-  const url = "https://trashnothing.com/api/v1.2/users/" + id + "/display";
   useEffect(() => {
+    const url = "https://trashnothing.com/api/v1.2/users/" + id + "/display";
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
@@ -18,13 +18,13 @@ export default function ProfileRender() {
       setAuthorDetails(response.data.user);
       setAuthorPosts(response.data.posts);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>
       <div className="profile">
         <div className="profile__image">
-          <img src={AuthorDetails.profile_image} alt="Profile Image" />
+          <img src={AuthorDetails.profile_image} alt="How does user look" />
         </div>
         <div className="profile__username">{AuthorDetails.username}</div>
         <div className="profile__country">{AuthorDetails.country}</div>

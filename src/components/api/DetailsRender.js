@@ -19,21 +19,19 @@ export default function DetailsRender() {
       setAuthorDetails(response.data.author);
       setPostImages(response.data.post.photos[0]);
     });
-  }, []);
-
-  console.log(PostDetails);
+  }, [id]);
 
   return (
     <div className="details">
       <div className="details__image">
-        <img src={PostImages.url} alt="Post Image Unavailable" />
+        <img src={PostImages.url} alt="Item look" />
       </div>
       <div className="details__title">{PostDetails.title}</div>
       <div className="details__description">{PostDetails.content}</div>
       <div className="author">
         <div className="flex">
           <div className="author__image">
-            <img src={AuthorDetails.profile_image} alt="Profile Image" />
+            <img src={AuthorDetails.profile_image} alt="User Look" />
           </div>
           <div className="author__info">
             <div>{AuthorDetails.username}</div>

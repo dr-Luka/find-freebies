@@ -4,9 +4,10 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 import LatestPostsRender from "../api/LatestPostsRender";
+import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [filter, setFilter] = useState("");
+  const [search, setSearch] = useState("");
   return (
     <div className="page">
       <header className="fade">
@@ -21,19 +22,21 @@ export default function Home() {
             className="search__input"
             type="text"
             placeholder=" Try BBQ, Yoga Mat, Painting ..."
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
           ></input>
-          <div className="searchButton">
-            <FontAwesomeIcon
-              className="searchButton__icon"
-              icon={faMagnifyingGlass}
-            />
-            <span className="searchButton__text">Search</span>
-          </div>
+          <Link to="/results" state={{ search }}>
+            <div className="searchButton">
+              <FontAwesomeIcon
+                className="searchButton__icon"
+                icon={faMagnifyingGlass}
+              />
+              <span className="searchButton__text">Search</span>
+            </div>
+          </Link>
         </div>
         <h2>Latest Posts in New York</h2>
-        <LatestPostsRender filter={filter} />
+        <LatestPostsRender />
       </main>
     </div>
   );

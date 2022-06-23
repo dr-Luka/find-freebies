@@ -1,7 +1,9 @@
 body {
   background-color: $blue;
 }
-
+a {
+  text-decoration: none;
+}
 .flex {
   display: flex;
   align-items: center;
