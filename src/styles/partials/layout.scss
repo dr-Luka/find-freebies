@@ -27,11 +27,11 @@ body {
   font-size: 20px;
   margin-top: 10px;
   font-weight: 500;
+  min-height: 55px;
 }
 .card__button {
   margin-top: 10px;
 }
-
 // ANIMATION
 .fade {
   animation: fadeIn 5s;

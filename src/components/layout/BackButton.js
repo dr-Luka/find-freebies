@@ -7,11 +7,8 @@ export default function GoBack() {
   const navigate = useNavigate();
 
   return (
-    <>
-      <FontAwesomeIcon className="icon" icon={faCircleLeft} />
-      <button className="backButton" onClick={() => navigate(-1)}>
-        Back
-      </button>
-    </>
+    <button className="backButton" onClick={() => navigate(-1)}>
+      <FontAwesomeIcon className="backButton__icon" icon={faCircleLeft} /> Back
+    </button>
   );
 }

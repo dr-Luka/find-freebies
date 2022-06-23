@@ -25,6 +25,14 @@
   display: block;
   margin-bottom: 20px;
 }
+.messageForm__info {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  margin: 0 auto;
+  justify-content: space-around;
+}
+// MESSAGE SENT PAGE
 .sentNotification {
   min-height: 100vh;
 }
@@ -36,8 +44,11 @@
 
 // MEDIA QUERY
 
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 769px) {
   .messageForm textarea {
     max-width: 50%;
+  }
+  .messageForm__info {
+    flex-direction: row;
   }
 }

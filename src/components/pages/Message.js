@@ -40,23 +40,28 @@ export default function Message() {
       <form onSubmit={handleSubmit(onSubmit)} className="messageForm">
         <h2>Send Message</h2>
         <fieldset disabled={false} className="messageFieldset">
-          <input
-            {...register("author")}
-            placeholder="Name"
-            className="nameInput"
-          />
-          {errors.author && (
-            <span className="formError">{errors.author.message}</span>
-          )}
-
-          <input
-            {...register("email")}
-            placeholder="Email"
-            className="emailInput"
-          />
-          {errors.email && (
-            <span className="formError">{errors.email.message}</span>
-          )}
+          <div className="messageForm__info">
+            <div>
+              <input
+                {...register("author")}
+                placeholder="Name"
+                className="nameInput"
+              />
+              {errors.author && (
+                <span className="formError">{errors.author.message}</span>
+              )}
+            </div>
+            <div>
+              <input
+                {...register("email")}
+                placeholder="Email"
+                className="emailInput"
+              />
+              {errors.email && (
+                <span className="formError">{errors.email.message}</span>
+              )}
+            </div>
+          </div>
 
           <textarea
             {...register("message")}

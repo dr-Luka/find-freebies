@@ -24,7 +24,13 @@ export default function Home() {
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
           ></input>
-          <FontAwesomeIcon className="icon" icon={faMagnifyingGlass} />
+          <div className="searchButton">
+            <FontAwesomeIcon
+              className="searchButton__icon"
+              icon={faMagnifyingGlass}
+            />
+            <span className="searchButton__text">Search</span>
+          </div>
         </div>
         <h2>Latest Posts in New York</h2>
         <LatestPostsRender filter={filter} />
