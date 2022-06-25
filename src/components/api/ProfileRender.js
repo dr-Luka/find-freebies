@@ -1,24 +1,54 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
-import { token } from "./apiSettings";
+import { baseURL, token } from "./apiSettings";
 import PostsCard from "../layout/PostsCard";
 
 export default function ProfileRender() {
   const [AuthorDetails, setAuthorDetails] = useState([]);
   const [AuthorPosts, setAuthorPosts] = useState([]);
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const { id } = useParams();
+
   useEffect(() => {
-    const url = "https://trashnothing.com/api/v1.2/users/" + id + "/display";
-    const config = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
-    Axios.get(url, config).then(function (response) {
-      setAuthorDetails(response.data.user);
-      setAuthorPosts(response.data.posts);
-    });
+    async function fetchData() {
+      try {
+        const url = baseURL + "users/" + id + "/display";
+        const config = {
+          headers: { Authorization: `Bearer ${token}` },
+        };
+        const response = Axios.get(url, config);
+        if (response) {
+          const json = await response;
+          const data = json.data;
+          setAuthorDetails(data.user);
+          setAuthorPosts(data.posts);
+        }
+      } catch (error) {
+        setError(error.toString());
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
   }, [id]);
+
+  if (loading) {
+    return (
+      <div className="loader">
+        <div className="lds-ripple">
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div>ERROR: An error occured</div>;
+  }
 
   return (
     <>

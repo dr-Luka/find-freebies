@@ -1,24 +1,37 @@
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import PostsCard from "../layout/PostsCard";
-import { token } from "./apiSettings";
+import { token, baseURL } from "./apiSettings";
 
 export default function LatestPostsRender({ filter }) {
   const [loading, setLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const config = {
-        headers: { Authorization: `Bearer ${token}` },
-      };
-      const response = await Axios.get(
-        "https://trashnothing.com/api/v1.2/posts?per_page=6&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=40.73061&longitude=-73.935242&radius=25000",
-        config
-      );
-      setPosts(response.data.posts);
-      setLoading(false);
-    };
+    async function fetchData() {
+      try {
+        const fetchLatest = async () => {
+          const config = {
+            headers: { Authorization: `Bearer ${token}` },
+          };
+          const response = await Axios.get(
+            baseURL +
+              "posts?per_page=6&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=40.73061&longitude=-73.935242&radius=25000",
+            config
+          );
+          if (response) {
+            setPosts(response.data.posts);
+            setLoading(false);
+          }
+        };
+        fetchLatest();
+      } catch (error) {
+        setError(error.toString());
+      } finally {
+        setLoading(false);
+      }
+    }
     fetchData();
   }, []);
 
@@ -31,6 +44,10 @@ export default function LatestPostsRender({ filter }) {
         </div>
       </div>
     );
+  }
+
+  if (error) {
+    return <div className="loadingError">ERROR: An error occured</div>;
   }
 
   return (
@@ -50,7 +67,7 @@ export default function LatestPostsRender({ filter }) {
           );
         })
       ) : (
-        <p>No Posts to Show</p>
+        <p className="noPosts">No Posts to Show</p>
       )}
     </div>
   );
