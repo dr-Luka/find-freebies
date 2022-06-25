@@ -22,34 +22,41 @@ export default function SearchResults() {
     });
 
   useEffect(() => {
-    async function fetchResults() {
+    if (!isGeolocationAvailable) {
+      setError("Geolocation is not available");
+      setLoading(false);
+      return;
+    }
+    if (!isGeolocationEnabled) {
+      setError("Geolocation is not enabled");
+      setLoading(false);
+      return;
+    }
+    if (!coords) {
+      return;
+    }
+    const search = location.state.search;
+    const fetchData = async () => {
+      const config = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
       try {
-        if (coords && isGeolocationAvailable && isGeolocationEnabled) {
-          const search = location.state.search;
-          const fetchData = async () => {
-            const config = {
-              headers: { Authorization: `Bearer ${token}` },
-            };
-            const response = await axios.get(
-              `${baseURL}posts/search?search=${search}&per_page=12&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=${
-                coords && coords.latitude
-              }&longitude=${coords && coords.longitude}&radius=25000`,
-              config
-            );
-            if (response) {
-              setPosts(response.data.posts);
-              setLoading(false);
-            }
-          };
-          fetchData();
-        } else {
-          setLoading(false);
+        const response = await axios.get(
+          `${baseURL}posts/search?search=${search}&per_page=12&types=offer&sources=groups,trashnothing,open_archive_groups&latitude=${
+            coords ? coords.latitude : "0"
+          }&longitude=${coords ? coords.longitude : "0"}&radius=25000`,
+          config
+        );
+        if (response) {
+          setPosts(response.data.posts);
         }
       } catch (error) {
         setError(error.toString());
+      } finally {
+        setLoading(false);
       }
-    }
-    fetchResults();
+    };
+    fetchData();
   }, [location, coords, isGeolocationAvailable, isGeolocationEnabled]);
 
   if (loading) {
@@ -64,14 +71,16 @@ export default function SearchResults() {
   }
 
   if (error) {
-    return <div>ERROR: An error occured</div>;
+    return (
+      <div>
+        <GoBack />
+        <h1>ERROR: An error occured</h1>
+        <h2>{error}</h2>
+      </div>
+    );
   }
 
-  return !isGeolocationAvailable ? (
-    <div>Your browser does not support Geolocation</div>
-  ) : !isGeolocationEnabled ? (
-    <div>Geolocation is not enabled</div>
-  ) : (
+  return (
     coords && (
       <div className="page">
         <GoBack />

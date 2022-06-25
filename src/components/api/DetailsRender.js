@@ -25,7 +25,7 @@ export default function DetailsRender() {
           const data = json.data;
           setPostDetails(data.post);
           setAuthorDetails(data.author);
-          setPostImages(data.post.photos[0]);
+          setPostImages(data.post.photos && data.post.photos[0]);
         }
       } catch (error) {
         setError("An error occured");
@@ -54,7 +54,7 @@ export default function DetailsRender() {
   return (
     <div className="details">
       <div className="details__image">
-        <img src={PostImages.url} alt="Item look" />
+        <img src={PostImages && PostImages.url} alt="Item look" />
       </div>
       <div className="details__title">{PostDetails.title}</div>
       <div className="details__description">{PostDetails.content}</div>
