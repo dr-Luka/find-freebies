@@ -9,7 +9,7 @@ a {
   align-items: center;
 }
 .page {
-  min-height: 80vh;
+  min-height: 75vh;
 }
 
 // POST CARD
@@ -23,6 +23,9 @@ a {
 .card__image {
   text-align: center;
   min-height: 267px;
+}
+.card__image img {
+  max-width: 200px;
 }
 .card__info {
   font-family: $montserrat;

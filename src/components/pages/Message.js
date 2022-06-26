@@ -35,7 +35,7 @@ export default function Message() {
   }
 
   return (
-    <div className="page">
+    <>
       <GoBack />
       <form onSubmit={handleSubmit(onSubmit)} className="messageForm">
         <h2>Send Message</h2>
@@ -76,6 +76,6 @@ export default function Message() {
           </div>
         </fieldset>
       </form>
-    </div>
+    </>
   );
 }

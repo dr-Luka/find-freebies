@@ -3,9 +3,8 @@ import { useState, useEffect } from "react";
 import { token, baseURL } from "../api/apiSettings";
 import { useLocation } from "react-router-dom";
 import { useGeolocated } from "react-geolocated";
-
 import GoBack from "../layout/BackButton";
-import HomePostCard from "../layout/PostsCard";
+import PostsCard from "../layout/PostsCard";
 
 export default function SearchResults() {
   const location = useLocation();
@@ -82,7 +81,7 @@ export default function SearchResults() {
 
   return (
     coords && (
-      <div className="page">
+      <>
         <GoBack />
         <h1>Search Results</h1>
         <div className="featuredPosts">
@@ -90,7 +89,7 @@ export default function SearchResults() {
             posts.map(function (Post) {
               const { content, photos, post_id, title, user_id } = Post;
               return (
-                <HomePostCard
+                <PostsCard
                   key={post_id}
                   post_id={post_id}
                   title={title}
@@ -101,10 +100,10 @@ export default function SearchResults() {
               );
             })
           ) : (
-            <p>No Posts to Show</p>
+            <p>No Posts near you!</p>
           )}
         </div>
-      </div>
+      </>
     )
   );
 }

@@ -2,7 +2,7 @@ import GoBack from "../layout/BackButton";
 import { Link } from "react-router-dom";
 export default function MessageSent() {
   return (
-    <div className="page">
+    <>
       <GoBack />
       <h1>Message Sent</h1>
       <p className="messageSent__p">
@@ -13,6 +13,6 @@ export default function MessageSent() {
           <button className="button button--view">Home</button>
         </Link>
       </div>
-    </div>
+    </>
   );
 }

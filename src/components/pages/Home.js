@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 export default function Home() {
   const [search, setSearch] = useState("");
   return (
-    <div className="page">
+    <>
       <header className="fade">
         <h1 className="header__heading">Welcome</h1>
         <p className="header__text">
@@ -38,6 +38,6 @@ export default function Home() {
         <h2>Latest Posts in New York</h2>
         <LatestPostsRender />
       </main>
-    </div>
+    </>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import Axios from "axios";
 import { token, baseURL } from "./apiSettings";
+import defaultImage from "../../images/defaultImage.png";
 
 export default function DetailsRender() {
   const [PostDetails, setPostDetails] = useState([]);
@@ -54,7 +55,11 @@ export default function DetailsRender() {
   return (
     <div className="details">
       <div className="details__image">
-        <img src={PostImages && PostImages.url} alt="Item look" />
+        {PostImages ? (
+          <img src={PostImages && PostImages.url} alt="Item look" />
+        ) : (
+          <img src={defaultImage} alt="Item look" />
+        )}
       </div>
       <div className="details__title">{PostDetails.title}</div>
       <div className="details__description">{PostDetails.content}</div>
